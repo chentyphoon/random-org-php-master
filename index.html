@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='utf-8'/>
+<title>樂透彩</title>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="text-center">
+	<h1 id="num">請點下方按鈕</h1>
+    <a href="#" class="btn btn-primary btn-lg active" role="button" onclick="randomorg()">抽號碼</a>
+    </div>
+</div>
+    <script>
+    function randomorg(){
+        //var bagid=$("#randomorg").val();
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "./randomorg.php",
+            //data: 'bagid='+bagid,
+            dataType: "json", // Set the data type so jQuery can parse it for you
+            success: function (data) {
+                $("#num").text(data[0]);
+            },
+            error: function() {
+                alert("error");
+                
+            }
+        });
+       
+
+    }
+    </script>
+
+</body>
